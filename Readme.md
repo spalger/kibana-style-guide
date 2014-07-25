@@ -1,12 +1,9 @@
-# Node.js Style Guide
+# JavaScript Style Guide
 
-This is a guide for writing consistent and aesthetically pleasing node.js code.
+This is a guide for writing consistent and aesthetically pleasing JavaScript.
+
 It is inspired by what is popular within the community, and flavored with some
 personal opinions.
-
-There is a .jshintrc which enforces these rules as closely as possible. You can
-either use that and adjust it, or use
-[this script](https://gist.github.com/kentcdodds/11293570) to make your own.
 
 This guide was created by [Felix Geisendörfer](http://felixge.de/) and is
 licensed under the [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
@@ -508,6 +505,76 @@ if (isSessionValid) {
   // ...
 }
 ```
+
+## Classes/Constructors and Inheritance
+
+While JavaScript it is not always considered an object-oriented language, it does have the building blocks for writing object oriented code. Of course, as with all things JavaScript, there are many ways this can be accomplished. Generally, we try to err on the side of readability.
+
+### Capitalized function definition as Constructors
+
+When Defining a Class/Constructor, use the function definition syntax.
+
+*Right:*
+```js
+function ClassName() {
+
+}
+```
+
+*Wrong:*
+```js
+var ClassName = function () {};
+```
+
+### Setup inheritance with a tool
+
+A codebase that utilizes inheritance should provide some tool for setting it up. Personally, I like to mix an `inherit` function into lodash:
+
+```js
+_.mixin({
+  inherits: function (Sub, Super) {
+    Sub.prototype = _.create(Super.prototype, { constructor: Sub });
+    Sub.Super = Super;
+    return Sub;
+  }
+})
+```
+
+Then use the lodash chained interface for an easy to read statement.
+
+```js
+_(Square).inherits(Shape);
+
+function Square() {
+  Square.Super.call(this);
+}
+```
+
+### Use the prototype
+
+If a method/property *can* go on the prototype it should.
+
+```js
+function Square() {
+  ...
+}
+
+/**
+ * method does stuff
+ * @return {undefined}
+ */
+Square.prototype.method = function () {
+  ...
+}
+```
+
+
+### Keep Constructors Small
+
+It is often the case that there are properties that can't be defined on the prototype, or work that needs to be done to completely create an object (like call it's Super class). This is all that should be done within constructors.
+
+Try to follow the [Write small functions](#write-small-functions) rule here too.
+
 
 ## Object.freeze, Object.preventExtensions, Object.seal, with, eval
 
