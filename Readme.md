@@ -381,13 +381,8 @@ as possible.
 
 ```js
 function isPercentage(val) {
-  if (val < 0) {
-    return false;
-  }
-
-  if (val > 100) {
-    return false;
-  }
+  if (val < 0) return false;
+  if (val > 100) return false;
 
   return true;
 }
