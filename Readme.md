@@ -259,8 +259,6 @@ if (a == '') {
 
 ## Don't use ternary operators
 
-
-
 *Right:*
 
 ```js
@@ -278,9 +276,7 @@ if (a === b) {
 ```js
 var foo = 2;
 
-if (a === b) {
-  foo = 1;
-}
+if (a === b) foo = 1;
 ```
 
 *Wrong:*
