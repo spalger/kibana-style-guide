@@ -316,17 +316,15 @@ if (a.empty()) {
 }
 ```
 
-## Use descriptive conditions
-
-Any non-trivial conditions should be assigned to a descriptively named variable or function:
+## Name regular expressions
 
 *Right:*
 
 ```js
-var isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
+var validPasswordRE = /^(?=.*\d).{4,}$/;
 
-if (isValidPassword) {
-  console.log('winning');
+if (password.length >= 4 && validPasswordRE.test(password)) {
+  console.log('password is valid');
 }
 ```
 
