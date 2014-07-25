@@ -94,7 +94,7 @@ they make sense.
 *Right:*
 
 ```js
-var keys   = ['foo', 'bar'];
+var keys = ['foo', 'bar'];
 var values = [23, 42];
 
 var object = {};
