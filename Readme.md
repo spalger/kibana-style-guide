@@ -61,6 +61,24 @@ var foo = 'bar';
 var foo = "bar";
 ```
 
+## Always write unbranced statements on a single line
+
+If you are going to leave the braces off of a if or for statement, then it should be written on a single line.
+
+*Right:*
+
+```js
+if (err) return cb(err);
+```
+
+*Wrong:*
+
+```js
+var clone = {};
+for (var key in obj)
+  clone[key] = obj[key];
+```
+
 ## Opening braces go on the same line
 
 Your opening braces go on the same line as the statement.
