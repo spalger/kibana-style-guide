@@ -465,7 +465,9 @@ setTimeout(function() {
 
 Use slashes for both single line and multi line comments. Try to write
 comments that explain higher level mechanisms or clarify difficult
-segments of your code. Don't use comments to restate trivial things.
+segments of your code. **Don't use comments to restate trivial things**.
+
+***Exception:*** Comment blocks describing a function and it's arguments (docblock) should start with `/**`, contain a single `*` at the begining of each line, and end with `*/`.
 
 *Right:*
 
@@ -473,16 +475,22 @@ segments of your code. Don't use comments to restate trivial things.
 // 'ID_SOMETHING=VALUE' -> ['ID_SOMETHING=VALUE', 'SOMETHING', 'VALUE']
 var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
 
-// This function has a nasty side effect where a failure to increment a
-// redis counter used for statistics will cause an exception. This needs
-// to be fixed in a later iteration.
-function loadUser(id, cb) {
-  // ...
+/**
+ * Fetches a user from...
+ * @param  {string} id - id of the user
+ * @return {Promise}
+ */
+function loadUser(id) {
+  // This function has a nasty side effect where a failure to increment a
+  // redis counter used for statistics will cause an exception. This needs
+  // to be fixed in a later iteration.
+
+  ...
 }
 
 var isSessionValid = (session.expires < Date.now());
 if (isSessionValid) {
-  // ...
+  ...
 }
 ```
 
