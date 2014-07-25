@@ -517,12 +517,12 @@ if (isSessionValid) {
 
 Crazy shit that you will probably never need. Stay away from it.
 
-## Getters and setters
-
-Do not use setters, they cause more problems for people who try to use your
-software than they can solve.
+## Getters and Setters
 
 Feel free to use getters that are free from [side effects][sideeffect], like
 providing a length property for a collection class.
+
+Do not use setters, they cause more problems for people who try to use your
+software than they can solve.
 
 [sideeffect]: http://en.wikipedia.org/wiki/Side_effect_(computer_science)
