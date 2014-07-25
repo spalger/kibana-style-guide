@@ -316,6 +316,36 @@ if (a.empty()) {
 }
 ```
 
+## Use descriptive conditions
+
+Any non-trivial conditions should be assigned to a descriptively named variables, broken into
+several names variables, or converted to be a function:
+
+*Right:*
+
+```js
+var thing = ...;
+var isShape = thing instanceof Shape;
+var notSquare = !(thing instanceof Square);
+var largerThan10 = isShape && thing.size > 10;
+
+if (isShape && notSquare && largerThan10) {
+  console.log('some big polygon');
+}
+```
+
+*Wrong:*
+
+```js
+if (
+  thing instanceof Shape
+  && !(thing instanceof Square)
+  && thing.size > 10
+) {
+  console.log('bigger than ten?? Woah!');
+}
+```
+
 ## Name regular expressions
 
 *Right:*
